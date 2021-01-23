@@ -154,7 +154,7 @@ return array(
 	 *  PHP set_locale() setting. Use null to not set.
 	 */
 
-	// 'locale' => 'en_US',
+	'locale' => 'ja_JP.utf8',
 
 	/**
 	 * -------------------------------------------------------------------------
@@ -180,7 +180,7 @@ return array(
 	 *  Change the server's default timezone. This is optional.
 	 */
 
-	// 'default_timezone' => null,
+	'default_timezone' => 'Asia/Tokyo',
 
 	/**
 	 * -------------------------------------------------------------------------
@@ -450,7 +450,7 @@ return array(
 	 * -------------------------------------------------------------------------
 	 */
 
-	// 'always_load' => array(
+	'always_load' => array(
 		/**
 		 * ---------------------------------------------------------------------
 		 *  These packages are loaded on Fuel's startup.
@@ -468,9 +468,10 @@ return array(
 		 * ---------------------------------------------------------------------
 		 */
 
-		// 'packages' => array(
-		// 	// 'orm',
-		// ),
+		'packages' => array(
+			// 'orm',
+			'email',
+		),
 
 		/**
 		 * ---------------------------------------------------------------------
@@ -532,5 +533,5 @@ return array(
 		 */
 
 		// 'language' => array(),
-	// ),
+	),
 );

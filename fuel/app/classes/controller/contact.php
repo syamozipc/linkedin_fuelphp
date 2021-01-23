@@ -40,12 +40,31 @@ class Controller_Contact extends Controller_Template {
 		$data['myname'] = Session::get_flash('myname');
 		$data['email'] = Session::get_flash('email');
 		$data['gender'] = Session::get_flash('gender');
+		Session::keep_flash();
 
 		$this->template->content = View::forge('contact/check', $data);
 	}
 
 	public function action_thanks()
 	{
+		//メールを送信
+		$email = Email::forge();
+		$email->from('master@example.com');
+		$email->to('syamozipc@gmail.com');
+		$email->subject('お問い合わせがあります');
+
+		$data['myname'] = Session::get_flash('myname');
+		$data['email'] = Session::get_flash('email');
+		$data['gender'] = Session::get_flash('gender');
+		$body = View::forge('contact/email', $data);
+		$email->body(mb_convert_encoding($body, 'jis'));
+
+		try {
+			$email->send();
+		} catch (\EmailSendingFailedException $e) {
+			echo 'Send error';
+		}
+
 		$this->template->title = 'お問い合わせ：完了';
 		$this->template->content = View::forge('contact/thanks');
 	}
