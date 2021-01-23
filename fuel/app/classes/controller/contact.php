@@ -40,6 +40,7 @@ class Controller_Contact extends Controller_Template {
 		$data['myname'] = Session::get_flash('myname');
 		$data['email'] = Session::get_flash('email');
 		$data['gender'] = Session::get_flash('gender');
+		//テスト
 
 		$this->template->content = View::forge('contact/check', $data);
 	}
