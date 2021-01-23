@@ -20,5 +20,6 @@
 				<?php endforeach; ?>
 			</table>
 		</form>
+		<?= $pagination; ?>
 	</body>
 </html>

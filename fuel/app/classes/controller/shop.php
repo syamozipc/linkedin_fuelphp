@@ -4,9 +4,21 @@ class Controller_Shop extends Controller
 {
 	public function action_index()
 	{
-		$data['rows'] = Model_Item::find_by('price', '100', '>');
+		$count = count(Model_Item::find());
+		$config = array(
+			'pagination_url' => '/shop/index',
+			'per_page' => 2,
+			'total_items' => $count
+		);
 
-		return View::forge('shop/index', $data);
+		$pagination = Pagination::forge('name', $config);
+
+		$sql = 'SELECT * FROM items LIMIT '.$pagination->per_page.' OFFSET '.$pagination->offset;
+
+		$data['rows'] = DB::query($sql)->execute();
+		$data['pagination'] = $pagination;
+
+		return View::forge('shop/index', $data, false);
 	}
 
 	public function action_save()
