@@ -1,8 +1,11 @@
-<ul class="nav nav-pills">
-	<li class='<?php echo Arr::get($subnav, "index" ); ?>'><?php echo Html::anchor('user/index','Index');?></li>
-	<li class='<?php echo Arr::get($subnav, "create" ); ?>'><?php echo Html::anchor('user/create','Create');?></li>
-	<li class='<?php echo Arr::get($subnav, "login" ); ?>'><?php echo Html::anchor('user/login','Login');?></li>
-	<li class='<?php echo Arr::get($subnav, "logout" ); ?>'><?php echo Html::anchor('user/logout','Logout');?></li>
+<h1>ログイン</h1>
 
-</ul>
-<p>Login</p>
+<?= Form::open('user/login'); ?>
+	<dl>
+		<dt><?= Form::label('username', 'ユーザー名'); ?></dt>
+		<dd><?= Form::input('username'); ?></dd>
+		<dt><?= Form::label('password', 'パスワード'); ?></dt>
+		<dd><?= Form::password('password'); ?></dd>
+	</dl>
+	<p><?= Form::submit('submit', 'ログイン'); ?></p>
+<?= Form::close(); ?>

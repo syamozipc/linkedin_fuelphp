@@ -4,6 +4,11 @@ class Controller_Shop extends Controller
 {
 	public function action_index()
 	{
+		//bootstrapで本番用DB、データも準備済み
+
+		//dbとconfigでprofiling設定
+		Profiler::mark(__Method__.'開始');
+
 		$count = count(Model_Item::find());
 		$config = array(
 			'pagination_url' => '/shop/index',
@@ -16,7 +21,12 @@ class Controller_Shop extends Controller
 		$sql = 'SELECT * FROM items LIMIT '.$pagination->per_page.' OFFSET '.$pagination->offset;
 
 		$data['rows'] = DB::query($sql)->execute();
+
+		Profiler::mark(__Method__.'DB完了');
+
 		$data['pagination'] = $pagination;
+
+		Profiler::mark(__Method__.'index完了');
 
 		return View::forge('shop/index', $data, false);
 	}

@@ -56,7 +56,7 @@ return array(
 
 	// 'index_file' => false,
 
-	// 'profiling' => false,
+	'profiling' => true,
 
 	/**
 	 * -------------------------------------------------------------------------
@@ -421,9 +421,9 @@ return array(
 	 *
 	 */
 
-	// 'module_paths' => array(
-	// 	// APPPATH.'modules'.DS
-	// ),
+	'module_paths' => array(
+		APPPATH.'modules'.DS
+	),
 
 	/**
 	 * -------------------------------------------------------------------------
