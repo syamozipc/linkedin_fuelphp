@@ -4,7 +4,6 @@ class Controller_Admin extends Controller_Template
 {
 	public function before()
 	{
-		//vs code gitテスト
 		if (!Auth::check()) {
 			Response::redirect('user/login');
 		}
