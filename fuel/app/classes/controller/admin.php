@@ -4,6 +4,7 @@ class Controller_Admin extends Controller_Template
 {
 	public function before()
 	{
+		//vscode テスト
 		if (!Auth::check()) {
 			Response::redirect('user/login');
 		}
